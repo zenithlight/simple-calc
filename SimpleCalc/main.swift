@@ -1,34 +1,47 @@
 import Foundation
+import Darwin
 
-func count(list: String?) {
+func count(list: Array<String>!) {
+    print(list.count)
+}
+
+func avg(list: Array<String>!) {
+    var total: Double = 0 // automatically handle decimals and negative numbers
+    
+    for number in list {
+        total += (number as NSString).doubleValue
+    }
+    
+    print(total / Double(list.count))
+}
+
+func fact(to: Int) {
+    var factorial: Int = 1
+    
+    for i in 2...to { // start at 2 because multiplying by 1 doesn't do anything
+        factorial *= i
+    }
+    
+    print(factorial)
+}
+
+func add(num1: Double, num2: Double) {
     
 }
 
-func avg(list: String?) {
+func sub(num1: Double, num2: Double) {
     
 }
 
-func fact(list: String?) {
+func mul(num1: Double, num2: Double) {
     
 }
 
-func add(num1: String?, num2: String?) {
+func div(num1: Double, num2: Double) {
     
 }
 
-func sub(num1: String?, num2: String?) {
-    
-}
-
-func mul(num1: String?, num2: String?) {
-    
-}
-
-func div(num1: String?, num2: String?) {
-    
-}
-
-func mod(num1: String?, num2: String?) {
+func mod(num1: Double, num2: Double) {
     
 }
 
@@ -44,38 +57,41 @@ else {
     let op = readLine(strippingNewline: true)
     
     if op == "count" {
-        count(list: string1)
+        count(list: string1?.components(separatedBy: " "))
+        exit(1)
     }
     
     if op == "avg" {
-        avg(list: string1)
+        avg(list: string1?.components(separatedBy: " "))
+        exit(1)
     }
     
     if op == "fact" {
-        fact(list: string1)
+        fact(to: (string1! as NSString).integerValue)
+        exit(1)
     }
         
     else {
         let string2 = readLine(strippingNewline: true)
         
         if op == "+" {
-            add(num1: string1, num2: string2)
+            add(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
         if op == "-" {
-            sub(num1: string1, num2: string2)
+            sub(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
         if op == "*" {
-            mul(num1: string1, num2: string2)
+            mul(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
         if op == "/" {
-            div(num1: string1, num2: string2)
+            div(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
         if op == "%" {
-            mod(num1: string1, num2: string2)
+            mod(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
     }
 }
