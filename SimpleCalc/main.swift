@@ -16,9 +16,14 @@ func avg(list: Array<String>!) {
 }
 
 func fact(to: Int) {
+    if (to < 1) {
+        print("Factorial number must be more than 1.")
+        exit(0)
+    }
+    
     var factorial: Int = 1
     
-    for i in 2...to { // start at 2 because multiplying by 1 doesn't do anything
+    for i in 1...to {
         factorial *= i
     }
     
@@ -26,23 +31,28 @@ func fact(to: Int) {
 }
 
 func add(num1: Double, num2: Double) {
-    
+    print(num1 + num2)
 }
 
 func sub(num1: Double, num2: Double) {
-    
+    print(num1 - num2)
 }
 
 func mul(num1: Double, num2: Double) {
-    
+    print(num1 * num2)
 }
 
 func div(num1: Double, num2: Double) {
+    if (num2 == 0) {
+        print("You can't divide by zero.")
+        exit(0)
+    }
     
+    print(num1 / num2)
 }
 
 func mod(num1: Double, num2: Double) {
-    
+    print(num1.truncatingRemainder(dividingBy: num2))
 }
 
 print("Enter an expression separated by returns")
@@ -78,20 +88,24 @@ else {
             add(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
-        if op == "-" {
+        else if op == "-" {
             sub(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
-        if op == "*" {
+        else if op == "*" {
             mul(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
-        if op == "/" {
+        else if op == "/" {
             div(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
         }
         
-        if op == "%" {
+        else if op == "%" {
             mod(num1: (string1! as NSString).doubleValue, num2: (string2! as NSString).doubleValue)
+        }
+        
+        else {
+            print("That was not a recognized operator.")
         }
     }
 }
